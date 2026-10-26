@@ -1,0 +1,135 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>HeatWatch Nagpur · Heat-Health Early Warning</title>
+<style>
+:root{--bg:#fff7ee;--card:#fff;--ink:#2b1d14;--mut:#7a6656;--ac:#e8590c;--ac2:#0b7285;--ln:#ecd9c6;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#150f0b;--card:#211812;--ink:#f6e9dc;--mut:#b49b86;--ac:#ff8a3d;--ac2:#3bc9db;--ln:#3a2b20;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#150f0b;--card:#211812;--ink:#f6e9dc;--mut:#b49b86;--ac:#ff8a3d;--ac2:#3bc9db;--ln:#3a2b20;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:hidden}
+.hero{position:relative;padding:56px 20px 40px;text-align:center;overflow:hidden}
+.blob{position:absolute!important;pointer-events:none;border-radius:50%;filter:blur(60px);opacity:.45;animation:fl 9s ease-in-out infinite alternate}
+.b1{width:300px;height:300px;background:var(--ac);left:-60px;top:-80px}.b2{width:260px;height:260px;background:var(--ac2);right:-40px;top:20px;animation-delay:-4s}
+@keyframes fl{to{transform:translate(40px,50px) scale(1.2)}}
+.hero>*{position:relative}h1{font-size:clamp(2rem,6vw,3.6rem);margin:.2em 0;letter-spacing:-.02em}h1 span{color:var(--ac)}
+.hero p{max-width:640px;margin:0 auto;color:var(--mut)}
+.kpis{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.kpi{background:var(--card);border:1px solid var(--ln);border-radius:14px;padding:12px 18px;min-width:120px;animation:up .8s both}
+.kpi b{display:block;font-size:1.7rem;color:var(--ac)}.kpi small{color:var(--mut)}
+@keyframes up{from{opacity:0;transform:translateY(20px)}}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:8px;overflow-x:auto;padding:10px 16px;background:var(--bg);border-bottom:1px solid var(--ln)}
+nav button,.chip{border:1px solid var(--ln);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 14px;cursor:pointer;white-space:nowrap;font:inherit;font-size:.9rem;transition:.2s}
+nav button.on,.chip.on{background:var(--ac);color:#fff;border-color:var(--ac)}nav button:hover,.chip:hover{transform:translateY(-2px)}
+main{max-width:900px;margin:0 auto;padding:20px 16px 60px;animation:up .5s}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:18px;margin:14px 0}
+h2{margin:.2em 0}h3{margin:.1em 0 .5em;font-size:1.05rem;color:var(--ac2)}.mut{color:var(--mut);font-size:.92rem}
+.sc{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.88rem}td,th{padding:6px 10px;border-bottom:1px solid var(--ln);text-align:right;white-space:nowrap}th:first-child,td:first-child{text-align:left}
+pre{background:#1e1713;color:#ffe3c8;padding:14px;border-radius:12px;overflow-x:auto;font-size:.8rem;margin:8px 0}
+.ln{stroke-dasharray:1;stroke-dashoffset:1;animation:dr 1.6s ease forwards}@keyframes dr{to{stroke-dashoffset:0}}
+.bar{display:flex;align-items:center;gap:8px;margin:4px 0;font-size:.85rem}.bar i{display:block;height:14px;border-radius:7px;background:linear-gradient(90deg,var(--ac2),var(--ac));animation:gw 1s both;transform-origin:left}@keyframes gw{from{transform:scaleX(0)}}.bar span:first-child{width:70px}
+.hm{display:grid;grid-template-columns:60px repeat(4,1fr);gap:3px;font-size:.8rem;text-align:center}.hm div{padding:10px 2px;border-radius:6px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;align-items:center}input[type=range]{accent-color:var(--ac);flex:1;min-width:140px}
+.big{font-size:2rem;font-weight:700;color:var(--ac)}.step{opacity:0;transform:translateX(-12px);transition:.5s;padding:6px 0}.step.s{opacity:1;transform:none}
+.ok{color:#2f9e44}.brand{display:inline-flex;align-items:center;gap:10px;font-size:1.3rem;font-weight:700;margin-bottom:6px}.sb{display:flex;gap:6px 18px;justify-content:center;flex-wrap:wrap;padding:8px 16px;background:var(--card);border-bottom:1px solid var(--ln);font-size:.82rem;color:var(--mut)}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#f59f00;margin-right:6px;animation:pl 1.6s infinite}@keyframes pl{50%{opacity:.3;transform:scale(1.6)}}.rb{padding:1px 9px;border-radius:99px;color:#fff;font-weight:600}svg.pl{cursor:crosshair}.tip{position:fixed;pointer-events:none;opacity:0;background:var(--card);border:1px solid var(--ln);border-radius:10px;padding:6px 10px;font-size:.8rem;z-index:20;box-shadow:0 6px 20px rgba(0,0,0,.25);transition:opacity .15s}.ft{text-align:center;color:var(--mut);font-size:.8rem;padding:24px 16px 40px;border-top:1px solid var(--ln)}details summary{cursor:pointer;color:var(--ac2);margin:6px 0}
+</style></head><body>
+<div class="sb" id="sb"></div><header class="hero"><div class="blob b1"></div><div class="blob b2"></div><div class="brand"><svg width="44" height="44" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#e8590c"/><stop offset="1" stop-color="#ffc233"/></linearGradient></defs><circle cx="24" cy="24" r="22" fill="none" stroke="url(#lg)" stroke-width="3"/><path d="M24 8c2 7 9 10 9 18a9 9 0 0 1-18 0c0-4 2-6 4-8 0 3 1 4 3 4-1-6 0-10 2-14z" fill="url(#lg)"/><path d="M10 36h28" stroke="#0b7285" stroke-width="3" stroke-linecap="round"/></svg><span>HeatWatch</span></div>
+<p style="letter-spacing:.2em;font-size:.8rem">HEAT-HEALTH EARLY WARNING SYSTEM · <span style="color:var(--ac)">● DEMO DATA</span></p>
+<h1>HeatWatch <span>Nagpur</span></h1>
+<p>Nagpur is one of India’s hottest cities. HeatWatch links heat, humidity and air pollution to daily heat-illness hospital visits, then forecasts the weeks ahead so hospitals can prepare.</p>
+<div class="kpis"><div class="kpi"><b data-n="1095">0</b><small>days of data</small></div><div class="kpi"><b data-n="4">0</b><small>variables</small></div><div class="kpi"><b data-n="6">0</b><small>analysis modules</small></div><div class="kpi"><b id="kr2">0</b><small>model R²</small></div></div></header>
+<nav id="nav"></nav><main id="m"></main><div id="tip" class="tip"></div><footer class="ft">Demo data: simulated for illustration, not real Nagpur hospital records. Outputs are planning estimates, not medical advice.</footer>
+<script>
+let s=42;const R=()=>{s=(s*16807)%2147483647;return s/2147483647},G=()=>Math.sqrt(-2*Math.log(R()||1e-9))*Math.cos(6.2832*R()),T6=6.2832;
+const N=1095,MO=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const raw={date:[],temp:[],hum:[],pm:[],er:[]};
+for(let i=0;i<N;i++){const d=i%365,t=28.5+7.5*Math.sin(T6*(d-49)/365)+1.3*G(),h=Math.min(100,Math.max(10,50+28*Math.sin(T6*(d-134)/365)+5*G())),p=Math.max(8,55+35*Math.cos(T6*(d-15)/365)+12*G());
+raw.date.push(new Date(2023,0,1+i));raw.temp.push(t);raw.hum.push(h);raw.pm.push(p);raw.er.push(Math.max(0,Math.round(.9*(t-20)+.06*p-.03*h+2+1.5*G())))}
+for(let k=0;k<30;k++)raw.pm[(k*37+11)%N]=NaN;for(let k=0;k<15;k++)raw.hum[(k*71+5)%N]=NaN;for(let k=0;k<7;k++)raw.temp[(k*151+40)%N]=99;
+const nn=a=>a.filter(x=>!isNaN(x)),mean=a=>{a=nn(a);return a.reduce((x,y)=>x+y,0)/a.length},sd=a=>{const m=mean(a);a=nn(a);return Math.sqrt(a.reduce((x,y)=>x+(y-m)**2,0)/a.length)};
+function interp(a){const o=a.slice();for(let i=0;i<o.length;i++)if(isNaN(o[i])){let l=i-1;while(l>=0&&isNaN(o[l]))l--;let r=i+1;while(r<o.length&&isNaN(o[r]))r++;o[i]=l<0?o[r]:r>=o.length?o[l]:o[l]+(o[r]-o[l])*(i-l)/(r-l)}return o}
+const noOut=raw.temp.map(x=>x>50?NaN:x);
+const fix=(c,m)=>{if(m=='raw')return raw[c];const b=c=='temp'?noOut:raw[c];if(m=='mean'){const mu=mean(b);return b.map(x=>isNaN(x)?mu:x)}return interp(b)};
+const C={date:raw.date,temp:fix('temp','i'),hum:fix('hum','i'),pm:fix('pm','i'),er:raw.er};
+const corr=(a,b)=>{const mx=mean(a),my=mean(b);let c=0,x=0,y=0;a.forEach((v,i)=>{c+=(v-mx)*(b[i]-my);x+=(v-mx)**2;y+=(b[i]-my)**2});return c/Math.sqrt(x*y)};
+function solve(A,b){const n=b.length;for(let i=0;i<n;i++){let m=i;for(let r=i+1;r<n;r++)if(Math.abs(A[r][i])>Math.abs(A[m][i]))m=r;[A[i],A[m]]=[A[m],A[i]];[b[i],b[m]]=[b[m],b[i]];for(let r=i+1;r<n;r++){const f=A[r][i]/A[i][i];for(let c=i;c<n;c++)A[r][c]-=f*A[i][c];b[r]-=f*b[i]}}const x=Array(n);for(let i=n-1;i>=0;i--){let t=b[i];for(let c=i+1;c<n;c++)t-=A[i][c]*x[c];x[i]=t/A[i][i]}return x}
+function ols(X,y){const k=X[0].length,A=Array.from({length:k},()=>Array(k).fill(0)),b=Array(k).fill(0);X.forEach((x,r)=>{for(let i=0;i<k;i++){b[i]+=x[i]*y[r];for(let j=0;j<k;j++)A[i][j]+=x[i]*x[j]}});return solve(A,b)}
+function plot0(ss,h=170){const W=640,all=ss.flatMap(q=>nn(q.y)),lo=Math.min(...all),hi=Math.max(...all),n=ss[0].y.length,X=i=>i/(n-1)*W,Y=v=>h-8-(v-lo)/(hi-lo||1)*(h-16);
+return `<svg viewBox="0 0 ${W} ${h}" width="100%" role="img">`+ss.map(q=>{let d='',pen=false;q.y.forEach((v,i)=>{if(isNaN(v)){pen=false;return}d+=(pen?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1);pen=true});return `<path class="ln" pathLength="1" d="${d}" stroke="${q.c}" stroke-width="${q.w||1.6}" fill="none" opacity="${q.o||1}"/>`}).join('')+`<text x="4" y="12" fill="var(--mut)" font-size="11">${hi.toFixed(1)}</text><text x="4" y="${h-3}" fill="var(--mut)" font-size="11">${lo.toFixed(1)}</text></svg>`}
+let PN=0;const PL={};
+function plot(ss,h=170){const id='p'+(PN++);PL[id]={ss,n:ss[0].y.length};const s=plot0(ss,h),all=ss.flatMap(q=>nn(q.y)),lo=Math.min(...all),hi=Math.max(...all),q0=ss[0],n=q0.y.length;
+const grid=[0,1,2,3].map(k=>{const y=8+k*(h-16)/3;return `<line x1="0" x2="640" y1="${y}" y2="${y}" stroke="var(--ln)" stroke-dasharray="3 5"/>`}).join('');
+let area='';if((q0.o||1)==1&&!q0.y.some(isNaN)){const X=i=>i/(n-1)*640,Y=v=>h-8-(v-lo)/(hi-lo||1)*(h-16);area=`<polygon points="0,${h} ${q0.y.map((v,i)=>X(i).toFixed(1)+','+Y(v).toFixed(1)).join(' ')} 640,${h}" fill="url(#g${id})"/>`}
+return s.replace('<svg ',`<svg class="pl" data-id="${id}" `).replace(/(<svg[^>]*>)/,`$1<defs><linearGradient id="g${id}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="${q0.c}" stop-opacity=".35"/><stop offset="1" stop-color="${q0.c}" stop-opacity="0"/></linearGradient></defs>${grid}${area}`).replace('</svg>',`<line class="cx" y1="0" y2="${h}" stroke="var(--mut)" opacity="0"/></svg>`)}
+document.addEventListener('mousemove',e=>{const tip=document.getElementById('tip'),sv=e.target.closest&&e.target.closest('svg.pl');if(!sv||!PL[sv.dataset.id]){tip.style.opacity=0;return}const r=sv.getBoundingClientRect(),p=PL[sv.dataset.id],i=Math.max(0,Math.min(p.n-1,Math.round((e.clientX-r.left)/r.width*(p.n-1)))),x=i/(p.n-1)*640,cx=sv.querySelector('.cx');cx.setAttribute('x1',x);cx.setAttribute('x2',x);cx.setAttribute('opacity',.6);tip.innerHTML=p.ss.map(q=>`<span style="color:${q.c}">●</span> ${isNaN(q.y[i])?'n/a':q.y[i].toFixed(1)}`).join('<br>')+`<br><small>day ${i+1}</small>`;tip.style.opacity=1;tip.style.left=(e.clientX+14)+'px';tip.style.top=(e.clientY+14)+'px'});
+const bars=(L,V,u='')=>{const mx=Math.max(...V);return L.map((l,i)=>`<div class="bar"><span>${l}</span><i style="width:${V[i]/mx*60}%"></i><span>${V[i].toFixed(1)}${u}</span></div>`).join('')};
+const AC='#e8590c',A2='#0b7285',st=a=>{const v=nn(a);return[v.length,a.length-v.length,mean(a),sd(a),Math.min(...v),Math.max(...v)]};
+const code=(t,sum)=>`<details><summary>${sum||'Python code'}</summary><pre>${t}</pre></details>`;
+const pill=(arr,fn,cur)=>`<div class="row">`+arr.map(([k,l])=>`<button class="chip ${k==cur?'on':''}" onclick="${fn}('${k}')">${l}</button>`).join('')+`</div>`;
+const S={cm:'raw',tm:'raw',q:0,ma:14,p:2,ts:'er'};
+const tabs=[['Overview',L1],['Data Quality',L2],['Risk Model',L3],['Data Sources',L4],['Data Warehouse',L5],['Forecast',L6]];
+const card=(t,b,x='')=>`<div class="card"><h3>${t}</h3>${b}${x}</div>`;
+function L1(){const names={temp:'Temp °C',hum:'Humidity %',pm:'PM2.5 µg/m³',er:'ER visits/day'};
+const rows=Object.keys(names).map(c=>{const a=st(raw[c]);return `<tr><td>${names[c]}</td><td>${a[0]}</td><td>${a[1]}</td><td>${a[2].toFixed(1)}</td><td>${a[3].toFixed(1)}</td><td>${a[4].toFixed(1)}</td><td${a[5]>50?' style="color:var(--ac);font-weight:700"':''}>${a[5].toFixed(1)}</td></tr>`}).join('');
+const cs=['temp','hum','pm','er'],hm=`<div class="hm"><div></div>`+cs.map(c=>`<div>${c}</div>`).join('')+cs.map(a=>`<div>${a}</div>`+cs.map(b=>{const r=corr(C[a],C[b]);return `<div style="background:${r>0?'rgba(232,89,12,':'rgba(11,114,133,'}${Math.abs(r).toFixed(2)});color:${Math.abs(r)>.5?'#fff':'inherit'}">${r.toFixed(2)}</div>`}).join('')).join('')+`</div>`;
+return `<h2>Situation Overview</h2><p class="mut">Three years of daily Nagpur readings: summary statistics, distributions and relationships between heat, air quality and hospital load.</p>`+
+card('Summary statistics · raw feed',`<div class="sc"><table><tr><th>Variable</th><th>valid</th><th>missing</th><th>mean</th><th>std</th><th>min</th><th>max</th></tr>${rows}</table></div><p class="mut">⚠ Temperature max is 99 °C, which is impossible, so it is a sensor error. Pollution and humidity have missing values. The Data Quality module fixes both.</p>`)+
+card('Raw temperature over time (spikes = bad sensor readings)',plot([{y:raw.temp,c:AC,w:1}]))+
+card('Correlation heatmap (after cleaning)',hm,`<p class="mut">Temperature drives hospital visits strongly (r = ${corr(C.temp,C.er).toFixed(2)}). Humidity and pollution move in opposite seasons.</p>`)+
+card('Distribution of daily ER visits',bars(['0-3','4-7','8-11','12-15','16+'],[0,4,8,12,16].map((l,i)=>C.er.filter(v=>v>=l&&v<(i<4?l+4:99)).length/N*100),'%'))+code(`df.info(); df.describe(); df.isna().sum()\nsns.heatmap(df.corr(), annot=True); df['er'].hist()`)}
+function L2(){const m=S.cm,t=fix('temp',m),p=fix('pm',m),h=fix('hum',m);const bad=(a,f)=>a.filter(f).length;
+return `<h2>Data Quality</h2><p class="mut">Sensor feeds contain errors. Choose how to treat impossible readings and gaps, and see the effect instantly.</p>`+pill([['raw','Raw'],['mean','Mean fill'],['interp','Interpolate']],'setC',m)+
+`<div class="row"><div class="card kpi"><b>${bad(t,x=>x>50)}</b><small>temp outliers</small></div><div class="card kpi"><b>${bad(p,isNaN)}</b><small>PM2.5 missing</small></div><div class="card kpi"><b>${bad(h,isNaN)}</b><small>humidity missing</small></div><div class="card kpi"><b>0</b><small>duplicates</small></div></div>`+
+card('Temperature (first 400 days)',plot([{y:t.slice(0,400),c:AC}]))+card('PM2.5 (first 400 days, gaps shown as breaks)',plot([{y:p.slice(0,400),c:A2}]))+
+`<p class="mut">Mean-fill flattens real seasonal patterns; time interpolation respects them, so the system uses interpolation.</p>`+code(`df.loc[df.temp > 50, "temp"] = np.nan   # sentinel -> missing\ndf = df.drop_duplicates()\ndf[["temp","hum","pm25"]] = df[["temp","hum","pm25"]].interpolate()\nQ1,Q3 = df.pm25.quantile([.25,.75]); IQR = Q3-Q1   # outlier fences`)}
+function setC(k){S.cm=k;render(1)}
+function L3(){const v=C.temp,mn=Math.min(...v),mx=Math.max(...v),mu=mean(v),sg=sd(v),pv=C.pm,pmn=Math.min(...pv),pmx=Math.max(...pv),pmu=mean(pv),psg=sd(pv),m=S.tm;
+const tf=(x,a,b,u,s)=>m=='raw'?x.toFixed(1):m=='mm'?((x-a)/(b-a)).toFixed(3):((x-u)/s).toFixed(3);
+const rows=[0,1,2,3,4].map(i=>`<tr><td>${raw.date[i].toDateString().slice(4,10)}</td><td>${tf(v[i],mn,mx,mu,sg)}</td><td>${tf(pv[i],pmn,pmx,pmu,psg)}</td></tr>`).join('');
+const bn=[['Mild <25',x=>x<25],['Warm 25-32',x=>x>=25&&x<32],['Hot 32-37',x=>x>=32&&x<37],['Extreme ≥37',x=>x>=37]].map(([l,f])=>[l,v.filter(f).length]);
+const mm=MO.map((_,k)=>mean(C.er.filter((_,i)=>raw.date[i].getMonth()==k)));
+const se=d=>{const k=d.getMonth();return k>=2&&k<=5?'Summer':k>=6&&k<=8?'Monsoon':'Winter'};
+const enc=[0,150,220].map(i=>{const q=se(raw.date[i]);return `<tr><td>${raw.date[i].toDateString().slice(4,10)}</td>${['Winter','Summer','Monsoon'].map(z=>`<td>${+(q==z)}</td>`).join('')}</tr>`}).join('');
+const tr=[],te=[];C.er.forEach((y,i)=>(i%5?tr:te).push(i));const X=i=>[1,C.temp[i],C.hum[i],C.pm[i]],b=ols(tr.map(X),tr.map(i=>C.er[i]));const pr=i=>X(i).reduce((a,x,j)=>a+x*b[j],0),ym=mean(te.map(i=>C.er[i]));
+const r2=1-te.reduce((a,i)=>a+(C.er[i]-pr(i))**2,0)/te.reduce((a,i)=>a+(C.er[i]-ym)**2,0);window.R2=r2;
+return `<h2>Risk Model</h2><p class="mut">Features are scaled, grouped and encoded, then a regression estimates daily heat-illness visits from temperature, humidity and PM2.5.</p>`+
+card('Scaling &amp; normalization',pill([['raw','Raw'],['mm','Min-Max (0-1)'],['z','Z-score']],'setT',m)+`<div class="sc"><table><tr><th>Date</th><th>Temp</th><th>PM2.5</th></tr>${rows}</table></div>`)+
+card('Binning (pd.cut) of temperature, days per bin',bars(bn.map(x=>x[0]),bn.map(x=>x[1])))+card('Aggregation (groupby month): mean ER visits',bars(MO,mm))+
+card('Encoding (one-hot season)',`<div class="sc"><table><tr><th>Date</th><th>Winter</th><th>Summer</th><th>Monsoon</th></tr>${enc}</table></div>`)+
+card('Regression (80/20 split)',`<div class="row"><div><div class="big">${r2.toFixed(3)}</div><small class="mut">R² on test data</small></div><div class="mut">ER = ${b[0].toFixed(2)} + ${b[1].toFixed(2)}·temp ${b[2]<0?'−':'+'} ${Math.abs(b[2]).toFixed(3)}·hum + ${b[3].toFixed(3)}·pm25</div></div>
+<p class="mut">Try a scenario:</p><div class="row">Temp <input id="rt" type="range" min="15" max="45" value="40" oninput="pred()"><b id="vt"></b></div><div class="row">PM2.5 <input id="rp" type="range" min="10" max="150" value="60" oninput="pred()"><b id="vp"></b></div><div class="row">Humidity 30%<b>→ predicted visits/day:</b><span class="big" id="pr">0</span></div>`)+
+code(`from sklearn.preprocessing import MinMaxScaler, StandardScaler, OneHotEncoder\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.model_selection import train_test_split\ndf["temp_bin"] = pd.cut(df.temp,[0,25,32,37,60],labels=["Mild","Warm","Hot","Extreme"])\nX_tr,X_te,y_tr,y_te = train_test_split(df[["temp","hum","pm25"]],df.er,test_size=.2)\nm = LinearRegression().fit(X_tr,y_tr); print(m.score(X_te,y_te))`);window.B=b}
+function pred(){const t=+$('#rt').value,p=+$('#rp').value;$('#vt').textContent=t+'°C';$('#vp').textContent=p;$('#pr').textContent=Math.max(0,B[0]+B[1]*t+B[2]*30+B[3]*p).toFixed(1)}
+function setT(k){S.tm=k;render(2)}
+function L4(){return `<h2>Data Sources</h2><p class="mut">Weather and air-quality data are collected from public APIs (Open-Meteo): a forecast endpoint for real-time data and an archive endpoint for history. This page replays a collector run for illustration and does not call the APIs live.</p>`+
+card('Steps in simple language',`<ol class="mut"><li><b>Choose an endpoint</b> and parameters (latitude, longitude, variables).</li><li><b>Send a GET request</b> with a timeout so it never hangs.</li><li><b>Check the status</b>: raise_for_status() stops on errors; retry a few times.</li><li><b>Parse JSON</b> with .json().</li><li><b>Structure it</b> into a pandas DataFrame and fix types (dates).</li><li><b>Save</b> as CSV and JSON for the next lab.</li></ol>`)+
+card('Run the pipeline',`<button class="chip on" onclick="runApi()">▶ Run collector</button><div id="st" style="margin-top:10px"></div><pre id="js" style="display:none">{"hourly":{"time":["2026-10-25T00:00","2026-10-25T01:00"],\n "temperature_2m":[26.4,25.9],"relative_humidity_2m":[58,61]}}</pre>`)+
+code(`import requests, pandas as pd\nURL = "https://api.open-meteo.com/v1/forecast"          # real-time\nHIST = "https://archive-api.open-meteo.com/v1/archive"  # history (add start_date, end_date)\nAIR = "https://air-quality-api.open-meteo.com/v1/air-quality"  # hourly=pm2_5\nparams = {"latitude":21.15,"longitude":79.09,"hourly":"temperature_2m,relative_humidity_2m",\n          "past_days":7,"timezone":"Asia/Kolkata"}\ndef fetch(url, params, tries=3):\n    for t in range(tries):\n        try:\n            r = requests.get(url, params=params, timeout=10)\n            r.raise_for_status()\n            return r.json()\n        except requests.RequestException as e:\n            print("retry", t, e)\n    raise SystemExit("API failed")\ndf = pd.DataFrame(fetch(URL, params)["hourly"])\ndf["time"] = pd.to_datetime(df["time"])\ndf.to_csv("nagpur_weather.csv", index=False)\ndf.to_json("nagpur_weather.json", orient="records")`,'Collector script (Python)')}
+function runApi(){const L=['GET api.open-meteo.com/v1/forecast?latitude=21.15&longitude=79.09','Status 200 OK · 0.41 s','JSON parsed: hourly.time (168), temperature_2m (168)','DataFrame 168 × 3 · time → datetime64','Saved nagpur_weather.csv and nagpur_weather.json ✔'];$('#js').style.display='none';$('#st').innerHTML=L.map(x=>`<div class="step">› ${x}</div>`).join('');document.querySelectorAll('.step').forEach((e,i)=>setTimeout(()=>{e.classList.add('s');if(i==2)$('#js').style.display='block'},i*650))}
+function L5(){const q=S.q,mm=MO.map((_,k)=>{const ix=raw.date.map((d,i)=>d.getMonth()==k?i:-1).filter(i=>i>=0);return[MO[k],mean(ix.map(i=>C.temp[i])).toFixed(1),mean(ix.map(i=>C.er[i])).toFixed(1)]}),
+top=(c,f)=>raw.date.map((d,i)=>[d.toISOString().slice(0,10),C[c][i].toFixed(1),C.er[i]]).sort((a,b)=>b[1]-a[1]).slice(0,5);
+const Q=[['SELECT strftime("%m",date) AS month, AVG(temp), AVG(er)\nFROM readings GROUP BY month;',['month','avg_temp','avg_er'],mm],['SELECT date, temp, er FROM readings\nORDER BY temp DESC LIMIT 5;',['date','temp','er'],top('temp')],['SELECT date, pm25, er FROM readings\nORDER BY pm25 DESC LIMIT 5;',['date','pm25','er'],top('pm')]];const[sq,h,r]=Q[q];
+return `<h2>Data Warehouse</h2><p class="mut">Cleaned records are stored in a SQL database and queried on demand. The same code works for SQLite, MySQL and PostgreSQL. Pick a query:</p>`+
+pill([[0,'Monthly averages'],[1,'Hottest days'],[2,'Most polluted days']],'setQ',q)+card('SQL',`<pre>${sq}</pre>`,`<div class="sc"><table><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr>${r.map(x=>`<tr>${x.map(y=>`<td>${y}</td>`).join('')}</tr>`).join('')}</table></div>`)+
+code(`import pandas as pd, sqlite3\nfrom sqlalchemy import create_engine, text\n# SQLite : "sqlite:///heatwatch.db"\n# MySQL  : "mysql+pymysql://user:pass@localhost/heat"\n# Postgres: "postgresql+psycopg2://user:pass@localhost/heat"\nengine = create_engine("sqlite:///heatwatch.db")\ndf = pd.read_excel("readings.xlsx")        # import from Excel\ndf.to_sql("readings", engine, if_exists="replace", index=False)\nres = pd.read_sql(text("SELECT * FROM readings ORDER BY temp DESC LIMIT 5"), engine)\ncon = sqlite3.connect("heatwatch.db")      # plain sqlite3 also works\ncon.execute("SELECT COUNT(*) FROM readings").fetchone()`,'Loader code (Python)')}
+function setQ(k){S.q=k;render(4)}
+function maChart(w){const y=C.temp,ma=y.map((_,i)=>mean(y.slice(Math.max(0,i-w+1),i+1))),sl=a=>a.slice(-365);return plot([{y:sl(y),c:AC,w:1,o:.4},{y:sl(ma),c:A2,w:2.4}])}
+function maUpd(v){S.ma=+v;$('#mac').innerHTML=maChart(+v);$('#maw').textContent=v+' days'}
+function L6(){const y=C.temp;
+const tr=y.map((_,i)=>mean(y.slice(Math.max(0,i-30),Math.min(N,i+31)))),dt=y.map((v,i)=>v-tr[i]),sm=MO.map((_,k)=>mean(dt.filter((_,i)=>raw.date[i].getMonth()==k))),se=y.map((_,i)=>sm[raw.date[i].getMonth()]),rs=y.map((v,i)=>v-tr[i]-se[i]);
+const p=S.p,H=60,tn=y.slice(0,N-H),d=[];for(let i=1;i<tn.length;i++)d.push(tn[i]-tn[i-1]);
+const X=[],Y=[];for(let t=p;t<d.length;t++){X.push([1,...Array.from({length:p},(_,j)=>d[t-1-j])]);Y.push(d[t])}const b=ols(X,Y);
+const hist=d.slice(),fc=[];let last=tn[tn.length-1];for(let k=0;k<H;k++){const x=[1,...Array.from({length:p},(_,j)=>hist[hist.length-1-j])],v=x.reduce((a,q,j)=>a+q*b[j],0);hist.push(v);last+=v;fc.push(last)}
+const act=y.slice(N-H),rm=Math.sqrt(act.reduce((a,v,i)=>a+(v-fc[i])**2,0)/H),nv=Math.sqrt(act.reduce((a,v)=>a+(v-tn[tn.length-1])**2,0)/H);
+const sub=(n,a,c)=>`<div class="mut">${n}</div>`+plot([{y:a.slice(0,730),c}],90);
+return `<h2>Forecast</h2><p class="mut">Temperature is smoothed, split into trend, seasonal pattern and noise, then forecast with ARIMA.</p>`+
+card('Moving-average smoothing (last year)',`<div class="row">Window <input type="range" min="1" max="60" value="${S.ma}" oninput="maUpd(this.value)"><b id="maw">${S.ma} days</b></div><div id="mac">${maChart(S.ma)}</div>`)+
+card('Decomposition: trend, seasonal, residual',sub('Trend (61-day centred average)',tr,A2)+sub('Seasonal (monthly pattern)',se,AC)+sub('Residual (what is left)',rs,'#868e96'))+
+card('ARIMA(p,1,0) forecast: next 60 days',`<p class="mut">The model is trained on all days except the last 60, then forecasts them. Compare the orange forecast with the real blue line. Pick the AR order p:</p>`+pill([[1,'p = 1'],[2,'p = 2'],[3,'p = 3']],'setP',p)+plot([{y:y.slice(N-H-60),c:A2},{y:[...Array(60).fill(NaN),...fc],c:AC,w:2.4}])+`<div class="row"><div><div class="big">${rm.toFixed(2)}°C</div><small class="mut">ARIMA RMSE</small></div><div><div class="big">${nv.toFixed(2)}°C</div><small class="mut">naive "same as today" RMSE</small></div></div><p class="mut">Daily noise makes plain ARIMA flat-ish. A seasonal model (SARIMA) would follow the yearly curve better, a natural next step.</p>`)+
+code(`from statsmodels.tsa.seasonal import seasonal_decompose\nfrom statsmodels.tsa.arima.model import ARIMA\nfrom statsmodels.tsa.stattools import adfuller\ns = df.set_index("date")["temp"]\ndf["ma14"] = s.rolling(14).mean()                    # moving average\nseasonal_decompose(s, model="additive", period=365).plot()\nprint(adfuller(s.diff().dropna()))                   # stationarity after d=1\nfit = ARIMA(s[:-60], order=(2,1,0)).fit()\nfc = fit.forecast(60)`)}
+function setP(k){S.p=+k;render(5)}
+const $=q=>document.querySelector(q);
+function render(i){S.tab=i;[...$('#nav').children].forEach((b,j)=>b.classList.toggle('on',j==i));$('#m').innerHTML=tabs[i][1]();if(i==2)pred()}
+$('#nav').innerHTML=tabs.map((t,i)=>`<button onclick="render(${i});scrollTo({top:document.querySelector('nav').offsetTop,behavior:'smooth'})">${t[0]}</button>`).join('');
+tabs[2][1]();{const i=N-1,t=C.temp[i],r=t<32?['Low','#2f9e44']:t<38?['Moderate','#f59f00']:t<42?['High','#e8590c']:['Extreme','#c92a2a'];$('#sb').innerHTML=`<span><i class="dot"></i>Demo mode · simulated data</span><span>Latest reading: ${raw.date[i].toDateString().slice(4)}</span><span>${t.toFixed(1)} °C · PM2.5 ${C.pm[i].toFixed(0)}</span><span>Heat risk <b class="rb" style="background:${r[1]}">${r[0]}</b></span><span>ER visits: ${C.er[i]}</span><span>Regression R² ${R2.toFixed(2)}</span>`}
+document.querySelectorAll('[data-n]').forEach(e=>{const n=+e.dataset.n;let k=0;const iv=setInterval(()=>{k+=Math.ceil(n/40);if(k>=n){k=n;clearInterval(iv)}e.textContent=k},30)});
+{let k=0;const iv=setInterval(()=>{k+=.02;$('#kr2').textContent=Math.min(k,R2).toFixed(2);if(k>=R2)clearInterval(iv)},30)}
+render(0);
+</script></body></html>
